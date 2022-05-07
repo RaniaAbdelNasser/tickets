@@ -11,28 +11,19 @@ import { GlobalProvider } from "./context/Provider";
 import TicketsView from "./containers/ticket/TicketsView";
 
 import './App.css';
+import CreateTicket from './containers/ticket/CreateTicket';
 
 
 function App() {
-  const [tickets, setTickets] = useState([]);
-  useEffect(() => {
-    getTickets();
-  }, []);
 
-  const getTickets = () => {
-    fetch('/api/tickets')
-      .then((res) => res.json())
-      .then((data) => setTickets(data.tickets))
-      .catch((error) => console.log('Error fetching tickets', error));
-  };
-  console.log(tickets);
+ 
   return (
     <GlobalProvider>
       <Router>
         <Routes>
 
           <Route exact path="/" element={<TicketsView />} />
-          {/* <Route exact path="/signup" element={SignUpContainer} /> */}
+          <Route exact path="/createTicket" element={<CreateTicket/>} />
           <Route element={<GenericNotFound />} />
 
         </Routes>

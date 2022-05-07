@@ -1,4 +1,14 @@
 import { createServer, Model } from 'miragejs';
+const ticketsList=[...Array(12000).keys()].map(key =>{
+  return {
+      subject: "add story",
+      priority: "High",
+      status: "In Progress",
+      description: "ticket description"
+  }
+});
+
+
 export function makeServer({ environment = 'test' } = {}) {
   let server = createServer({
     environment,
@@ -6,146 +16,13 @@ export function makeServer({ environment = 'test' } = {}) {
       tickets: Model,
     },
     seeds(server) {
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "In Progress",
-        description: "ticket a"
+      ticketsList.map((t)=>{
+        server.create('ticket', t);
       });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Low",
-        status: "Canceled",
-        description: "ticket a"
-      });
-
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "Canceled",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "Canceled",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Normal",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Normal",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Normal",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "Normal",
-        status: "In Progress",
-        description: "ticket a"
-      });
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "In Progress",
-        description: "ticket a"
-      });
-
-      server.create('ticket', {
-        subject: "add story",
-        priority: "High",
-        status: "In Progress",
-        description: "ticket cc"
-      });
+ 
+      
+      
+    
     },
     routes() {
       this.namespace = 'api/tickets';
