@@ -4,10 +4,6 @@ import * as actions from '../constant/actionTypes';
 
 const tickets = (state,{payload,type})=>{
     switch(type){
-    
-
-
-
         case actions.TICKETS_LOADING:{
             return {
                 ...state,
@@ -18,7 +14,6 @@ const tickets = (state,{payload,type})=>{
                 },
             };
         }
-
         case  actions.TICKETS_LOAD_SUCCES:{
             return {
                 ...state,
@@ -41,16 +36,14 @@ const tickets = (state,{payload,type})=>{
             };
         }
 
-       
-       
-       
+    //    single ticket 
         case actions.TICKET_LOADING:{
             return {
                 ...state,
                 ticket:{
                     ...state.ticket,
-                    errorMeal: null,
-                    loadingMeal:true,
+                    errorTicket: null,
+                    loadingTicket:true,
                 },
             };
         }
@@ -60,8 +53,8 @@ const tickets = (state,{payload,type})=>{
                 ...state,
                 ticket:{
                     ...state.ticket,
-                    loadingMeal:false,
-                    dataMeal:payload,
+                    loadingTicket:false,
+                    dataTicket:payload,
                 },
             };
         }
@@ -71,16 +64,12 @@ const tickets = (state,{payload,type})=>{
                 ...state,
                 ticket:{
                     ...state. ticket,
-                    loadingMeal:false,
-                    errorMeal:payload,
+                    loadingTicket:false,
+                    errorTicket:payload,
                 },
             };
         }
-
-
         // create order 
-
-
         case actions.CREATE_TICKET_LOADING:{
             return {
                 ...state,
@@ -121,6 +110,48 @@ const tickets = (state,{payload,type})=>{
                     errorCreateTicket:null,
                     loadingCreateTicket:false,
                     dataCreateTicket:null
+                },
+            };
+        }
+         // edit order 
+         case actions.EDIT_TICKET_LOADING:{
+            return {
+                ...state,
+                editTicket:{
+                    ...state.editTicket,
+                    errorEditTicket: null,
+                    loadingEditTicket:true,
+                },
+            };
+        }
+        case  actions.EDIT_TICKET_LOAD_SUCCES:{
+            return {
+                ...state,
+                editTicket:{
+                    ...state.editTicket,
+                    loadingEditTicket:false,
+                    dataEditTicket:payload,
+                },
+            };
+        }
+        case   actions.EDIT_TICKET_LOAD_ERROR:{
+            return {
+                ...state,
+                editTicket:{
+                    ...state. editTicket,
+                    loadingEditTicket:false,
+                    errorEditTicket:payload,
+                },
+            };
+        }
+        case actions.CLEAR_EDIT_TICKET:{
+            return {
+                ...state,
+                editTicket:{
+                    ...state. editTicket,
+                    errorEditTicket:null,
+                    loadingEditTicket:false,
+                    dataEditTicket:null
                 },
             };
         }

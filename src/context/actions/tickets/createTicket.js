@@ -7,7 +7,7 @@ export default (bodyRequest) => (dispatch) => {
 
         type:actions.CREATE_TICKET_LOADING
     });
-    fetch('/api/tickets2', {
+    fetch('/api/tickets', {
         method: 'POST',
         body: JSON.stringify(bodyRequest),
          })

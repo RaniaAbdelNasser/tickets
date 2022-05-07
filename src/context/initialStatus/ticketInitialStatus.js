@@ -15,4 +15,10 @@ export default {
       errorCreateTicket: null,
       dataCreateTicket:null
     },
+    editTicket: {
+      loadingEditTicket: false,
+      errorEditTicket: null,
+      dataEditTicket:null
+    },
+
 }

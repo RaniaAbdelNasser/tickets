@@ -8,14 +8,14 @@ import AddIcon from '@mui/icons-material/Add';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import ListTickets from './ListTickets';
-
+import { useNavigate } from "react-router-dom";
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 function TicketsTable({ tickets, ...props }) {
-
+    let historyNavigate = useNavigate();
 
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [page, setPage] = React.useState(0); const [view, setView] = React.useState('list');
@@ -29,6 +29,11 @@ function TicketsTable({ tickets, ...props }) {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
+    const handelViewTicket=(e)=>(id)=>{
+        e.preventDefault();
+        console.log('id', id)
+        historyNavigate(`/viewTicket/${id}`);
+    }
     return (
         <TableContainer  >
             {tickets?.length > 0 &&
@@ -58,7 +63,7 @@ function TicketsTable({ tickets, ...props }) {
                                     <TableCell align="center">{row.status}</TableCell>
                                     <TableCell align="center">{row.description}</TableCell>
                                     <TableCell align="center">
-                                        <IconButton color="primary" aria-label="upload picture" component="span">
+                                        <IconButton color="primary" aria-label="upload picture" onClick={()=>  {historyNavigate(`/viewTicket/${row.id}`);}} >
                                             <RemoveRedEyeIcon />
                                         </IconButton>
                                         <IconButton color="error" aria-label="upload picture" component="span">

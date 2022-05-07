@@ -3,7 +3,7 @@ import { GlobalContext } from "./../../context/Provider";
 import createTicket from "../../context/actions/tickets/createTicket";
 import clearCreateTicket from "../../context/actions/tickets/clearCreateTicket";
 import { TextField, Divider, Grid, Select, MenuItem, FormControl, Typography, Container, Paper, Breadcrumbs, Link, Snackbar } from '@mui/material';
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,useParams} from "react-router-dom";
 import MuiAlert from '@mui/material/Alert';
 import LoadingButton from '@mui/lab/LoadingButton';
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -12,6 +12,8 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 function CreateTicket() {
     let historyNavigate = useNavigate();
+    let { id } = useParams();
+    console.log('id', id);
     const [subject, setSubject] = React.useState('');
     const [priority, setPriority] = React.useState('');
     const [status, setStatus] = React.useState('');
@@ -88,7 +90,7 @@ function CreateTicket() {
                             <span style={{ color: "red" }}>*</span>
                         </Grid>
                         <Grid item xs={9}>
-                            <TextField fullWidth label="Subject"
+                            <TextField fullWidth placeholder="subject"
                                 value={subject}
                                 required
                                 onChange={handelChangeSubject}
@@ -147,7 +149,7 @@ function CreateTicket() {
                             <textarea type="text" className='input-style' value={description} onChange={(e) => { setDescription(e.target.value) }} rows={4} placeholder="Enter description"></textarea>
                         </Grid>
                         <div className="btn-postion">
-                            <LoadingButton type="submit" className="btn-style" loadingPosition="end" loading={loadingCreateTicket} variant="contained" >Submit</LoadingButton>
+                            <LoadingButton type="submit" className="btn-style"     loading={loadingCreateTicket} variant="contained" >Submit</LoadingButton>
                         </div>
                         {errorCreateTicket && <div>
                             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

@@ -88,3 +88,25 @@ ul {
   padding: 16.5px 14px;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
+textarea:disabled {
+  cursor: default;
+
+  color: rgba(0, 0, 0, 0.68) !important;
+  border-color: rgba(118, 118, 118, 0.3);
+}
+.view-dev{
+  border: 1px solid darkgray;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.68) !important;
+  border-color: rgba(118, 118, 118, 0.3);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+  align-items: center;
+  width: 96%;
+    position: relative;
+    border-radius: 4px;
+  padding: 16.5px 14px;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
