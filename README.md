@@ -1,53 +1,54 @@
 
 
-Tickets
-# Getting Started 
-To get the  app running locally:
 
-Clone this repo
-### `npm start`
-
-
-Code Overview
-
-Dependencies
-
-Mirage  - Mirage is a JavaScript library that lets frontend developers mock out backend APIs.
+# Tickets - Reactjs Application
+An application for create lots of tickets, see all Tickets ,and update Tickets .
 
 
 
 
+## Getting started
+To get the Project running locally:
 
+- Clone this repo
+- npm install to install all required dependencies
+- ### `npm start` to start the local server
 
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Code Overview
 
-### `npm run build`
+### Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Reactjs
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Mirage  - Mirage is a JavaScript library that lets frontend developers mock out backend APIs.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+MUI - used to style the UI in Reactjs Proect.
+
+## Application Structure
+
+First routes:
+- "/" - This route to home to see all Tickets.
+- "/createTicket" - to create new ticket.
+- "/viewTicket/:idTicket"  -to view  ticket.
+
+Note : shouldn't tefresh the app if you add new data or update it becouse the server will refresh .
+
+logic:
+
+- use flux structure  to get the data from backend  (reducer, action, context )
+- use react hooks to handel status 
+- make component to generate (table view , list view , create ticket , view/edit ticket ) screens.
+
+
+
+
+
+
+
