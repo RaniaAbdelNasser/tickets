@@ -3,22 +3,24 @@ import { GlobalContext } from "./../../context/Provider";
 import createTicket from "../../context/actions/tickets/createTicket";
 import clearCreateTicket from "../../context/actions/tickets/clearCreateTicket";
 import { TextField, Divider, Grid, Select, MenuItem, FormControl, Typography, Container, Paper, Breadcrumbs, Link, Snackbar } from '@mui/material';
-import { useNavigate ,useParams} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import MuiAlert from '@mui/material/Alert';
 import LoadingButton from '@mui/lab/LoadingButton';
+
+// new style for MuiAlert
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 function CreateTicket() {
     let historyNavigate = useNavigate();
-    let { id } = useParams();
-    console.log('id', id);
+    // vars of create new tickets
     const [subject, setSubject] = React.useState('');
     const [priority, setPriority] = React.useState('');
     const [status, setStatus] = React.useState('');
     const [description, setDescription] = React.useState('');
-    const [open, setOpen] = React.useState(false);
+    const [openSnack, setOpenSnack] = React.useState(false);
+    // dispatch
     const {
         ticketsDispatch,
         ticketsState: {
@@ -26,12 +28,12 @@ function CreateTicket() {
         },
     } = useContext(GlobalContext);
 
-   
+    // handel Function section
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
-        setOpen(false);
+        setOpenSnack(false);
     };
     const handleChangeStatus = (event) => {
         setStatus(event.target.value);
@@ -51,28 +53,31 @@ function CreateTicket() {
             status: status,
             description: description
         }
+        // api of create new ticket
         createTicket(requestBody)(ticketsDispatch);
     }
-
+    // all Use effect section
+    // when finsh create new ticket effect  
     useEffect(() => {
+        //  route to go home 
         if (dataCreateTicket !== null) {
             historyNavigate("/");
         }
+        // clear data in reducer when leave screen
         return () => {
             clearCreateTicket()(ticketsDispatch);
         };
     }, [dataCreateTicket]);
 
+    // when occure error while add new ticket effect => open snackBar 
     useEffect(() => {
         if (errorCreateTicket !== null) {
-            setOpen(true);
+            setOpenSnack(true);
         }
-
     }, [errorCreateTicket]);
 
     return (
         <Container style={{ marginTop: "35px" }}>
-
             <Breadcrumbs aria-label="breadcrumb">
                 <Link underline="hover" color="inherit" href="/">
                     Tickets
@@ -151,16 +156,15 @@ function CreateTicket() {
                         <div className="btn-postion">
                             <LoadingButton type="submit" className="btn-style"     loading={loadingCreateTicket} variant="contained" >Submit</LoadingButton>
                         </div>
+                        {/* condition to appear sanckbar  */}
                         {errorCreateTicket && <div>
-                            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                            <Snackbar open={openSnack} autoHideDuration={6000} onClose={handleClose}>
                                 <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
                                     {"Error Message: " + errorCreateTicket}
                                 </Alert>
                             </Snackbar>
                         </div>}
                     </Grid>
-
-
                 </form>
             </Paper>
         </Container>

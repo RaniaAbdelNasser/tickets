@@ -69,7 +69,7 @@ const tickets = (state,{payload,type})=>{
                 },
             };
         }
-        // create order 
+        // create ticket 
         case actions.CREATE_TICKET_LOADING:{
             return {
                 ...state,
@@ -113,7 +113,7 @@ const tickets = (state,{payload,type})=>{
                 },
             };
         }
-         // edit order 
+         // edit ticket 
          case actions.EDIT_TICKET_LOADING:{
             return {
                 ...state,

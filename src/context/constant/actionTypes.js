@@ -1,23 +1,23 @@
 
 
 
-
+// const for get tickets request 
 export const TICKETS_LOADING="TICKETS_LOADING";
 export const TICKETS_LOAD_SUCCES="TICKETS_LOAD_SUCCES";
 export const TICKETS_LOAD_ERROR="TICKETS_LOAD_ERROR";
 
-
+// const for get ticket request 
 export const TICKET_LOADING="TICKET_LOADING";
 export const TICKET_LOAD_SUCCES="TICKET_LOAD_SUCCES";
 export const TICKET_LOAD_ERROR="TICKET_LOAD_ERROR";
 
-
+// const for create tickets request 
 export const CREATE_TICKET_LOADING="CREATE_TICKET_LOADING";
 export const CREATE_TICKET_LOAD_SUCCES="CREATE_TICKET_LOAD_SUCCES";
 export const CREATE_TICKET_LOAD_ERROR="CREATE_TICKET_LOAD_ERROR";
 export const  CLEAR_CREATE_TICKET= "CLEAR_CREATE_TICKET";
 
-
+// const for edit tickets request 
 export const EDIT_TICKET_LOADING="EDIT_TICKET_LOADING";
 export const EDIT_TICKET_LOAD_SUCCES="EDIT_TICKET_LOAD_SUCCES";
 export const EDIT_TICKET_LOAD_ERROR="EDIT_TICKET_LOAD_ERROR";

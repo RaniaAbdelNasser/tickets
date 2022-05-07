@@ -4,7 +4,6 @@ export default {
       error: null,
       tickets:[],
     },
-   
     ticket: {
       loadingTicket: false,
       errorTicket: null,

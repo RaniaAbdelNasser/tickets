@@ -1,25 +1,14 @@
-.App {
-  text-align: center;
-}
-body{
+
+
+body {
   background-color: #EFEFEF;
 }
-.title{
+
+.title {
   font-size: 20px;
   font-weight: 600;
   margin-left: 10px;
   color: #112B3C;
-}
-
-
-.wrapper {
-  display: inline-block;
-}
-
-.wrapper table {
-	border-style: none;
-	/*border-collapse: collapse;*/
-  /*display: block;*/
 }
 
 .dev-content {
@@ -28,52 +17,58 @@ body{
   display: block;
 }
 
-.row-list{
+.row-list {
   border-bottom: 1px solid #EFEFEF;
   width: 100%;
 }
+
 ul {
   list-style-type: none;
 }
-.container-list{
+
+.container-list {
   display: block;
-
   margin: 20px 60px;
-
   border: 1px solid #EFEFEF;
 }
-.li-row-span{
+
+.li-row-span {
   padding: 0px 10px;
 }
-.form-Title{
+
+.form-Title {
   font-size: 15px;
   font-weight: 500;
   color: #112B3C;
-    align-items: center;
-    display: flex;
-
+  align-items: center;
+  display: flex;
 }
-.title-info{
+
+.title-info {
   padding: 20px 10px;
   font-size: 16px;
   font-weight: 600;
 
   color: #112B3C;
 }
-.form-style{
+
+.form-style {
   padding: 20px 10px;
 }
-.btn-postion{
+
+.btn-postion {
   display: flex;
   justify-content: end;
   width: 100%;
-    padding: 20px 0px;
+  padding: 20px 0px;
 }
-.btn-style{
+
+.btn-style {
   border-radius: 20px !important;
   padding: 10px 50px !important;
 }
-.input-style{
+
+.input-style {
   border: 1px solid darkgray;
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.87);
@@ -83,18 +78,19 @@ ul {
   letter-spacing: 0.00938em;
   align-items: center;
   width: 96%;
-    position: relative;
-    border-radius: 4px;
+  position: relative;
+  border-radius: 4px;
   padding: 16.5px 14px;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
+
 textarea:disabled {
   cursor: default;
-
   color: rgba(0, 0, 0, 0.68) !important;
   border-color: rgba(118, 118, 118, 0.3);
 }
-.view-dev{
+
+.view-dev {
   border: 1px solid darkgray;
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.68) !important;
@@ -105,8 +101,14 @@ textarea:disabled {
   letter-spacing: 0.00938em;
   align-items: center;
   width: 96%;
-    position: relative;
-    border-radius: 4px;
+  position: relative;
+  border-radius: 4px;
   padding: 16.5px 14px;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.li-Title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #112B3C;
 }

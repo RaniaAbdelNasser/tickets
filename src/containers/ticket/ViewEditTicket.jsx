@@ -8,19 +8,24 @@ import { useNavigate, useParams } from "react-router-dom";
 import MuiAlert from '@mui/material/Alert';
 import EditIcon from '@mui/icons-material/Edit';
 import LoadingButton from '@mui/lab/LoadingButton';
+
+// new style for MuiAlert
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 function ViewEditTicket() {
     let historyNavigate = useNavigate();
+    // get id of selected ticket
     let { idTicket } = useParams();
+    // vars of create new tickets
     const [subject, setSubject] = React.useState('');
     const [priority, setPriority] = React.useState('');
     const [status, setStatus] = React.useState('');
     const [description, setDescription] = React.useState('');
-    const [open, setOpen] = React.useState(false);
+    const [openSnack, setOpenSnack] = React.useState(false);
     const [edit, setEdit] = React.useState(false);
+    // dispatch
     const {
         ticketsDispatch,
         ticketsState: {
@@ -29,13 +34,14 @@ function ViewEditTicket() {
         },
     } = useContext(GlobalContext);
 
-
+     // handel Function section
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
-        setOpen(false);
+        setOpenSnack(false);
     };
+
     const handleChangeStatus = (event) => {
         setStatus(event.target.value);
     };
@@ -54,13 +60,17 @@ function ViewEditTicket() {
             status: status,
             description: description
         }
-        editTicket({id:idTicket,bodyRequest:requestBody})(ticketsDispatch);
+           // api of edit new ticket
+        editTicket({ id: idTicket, bodyRequest: requestBody })(ticketsDispatch);
     }
-
+     // all Use effect section
+    // when finsh edit  ticket effect  
     useEffect(() => {
+        //  route to go home 
         if (dataEditTicket !== null) {
             historyNavigate("/");
         }
+          // clear data in reducer when leave screen
         return () => {
             clearEditTicket()(ticketsDispatch);
         };
@@ -68,23 +78,26 @@ function ViewEditTicket() {
 
     useEffect(() => {
         if (errorEditTicket !== null) {
-            setOpen(true);
+            setOpenSnack(true);
         }
 
     }, [errorEditTicket]);
+
+    // when occure error while edit  ticket effect => open snackBar 
     useEffect(() => {
         getTicket(idTicket)(ticketsDispatch);
     }, []);
+
+    //  add values of ticket object to status to can change it 
     useEffect(() => {
         setSubject(dataTicket?.subject);
         setPriority(dataTicket?.priority);
         setStatus(dataTicket?.status);
         setDescription(dataTicket?.description);
-    }, [dataTicket !== null]);
-    console.log('dataTicket', dataTicket)
+    }, [dataTicket]);
+
     return (
         <Container style={{ marginTop: "35px" }}>
-
             <Breadcrumbs aria-label="breadcrumb">
                 <Link underline="hover" color="inherit" href="/">
                     Tickets
@@ -102,6 +115,7 @@ function ViewEditTicket() {
                     </Tooltip>
                 </div>
                 <Divider />
+                {/* appear Loading while geting data */}
                 {loadingTicket && <Box sx={{ display: 'flex', justifyContent: "center" }}>
                     <CircularProgress />
                 </Box>}
@@ -186,8 +200,9 @@ function ViewEditTicket() {
                                 <div className="btn-postion">
                                     <LoadingButton type="submit" className="btn-style" loading={loadingEditTicket} variant="contained" >Save Changes</LoadingButton>
                                 </div>}
+                                 {/* condition to appear sanckbar  */}
                             {errorEditTicket && <div>
-                                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                                <Snackbar open={openSnack} autoHideDuration={6000} onClose={handleClose}>
                                     <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
                                         {"Error Message: " + errorEditTicket}
                                     </Alert>

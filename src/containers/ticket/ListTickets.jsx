@@ -1,15 +1,16 @@
 import React from 'react'
-import { Button, TablePagination, Divider, IconButton, Table, Typography, Container, Paper, Box, CircularProgress, TableRow, TableHead, TableContainer, TableCell, TableBody } from '@mui/material';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
+
 function ListTickets({ rows, rowHeight, windowHeight, itemHeight, renderItem, ...props }) {
-  const columns = Object.keys(rows[0]);
-  const [tableHeight, setTableHeight] = React.useState(rowHeight * rows.length);
+  const tableHeight = rowHeight * rows.length;
+
   const [scroll, setScroll] = React.useState({
     top: 0,
     index: 0,
     end: Math.ceil((itemHeight * 2) / rowHeight)
   });
 
+  
+// on scroll function to set new values of seen rows 
   const onScroll = ({ target }) => {
     let scrollTop = target.scrollTop
     let index = Math.floor(scrollTop / rowHeight);
@@ -20,12 +21,11 @@ function ListTickets({ rows, rowHeight, windowHeight, itemHeight, renderItem, ..
 
     })
   }
+// generate rows just to seen rows in the list and changed while scroll 
   const generateRows = () => {
     let index = scroll.index
     let end = scroll.end
     let items = []
-    console.log('index', index);
-    console.log('end', end);
     do {
       if (index >= rows.length) {
         index = rows.length;
@@ -38,11 +38,10 @@ function ListTickets({ rows, rowHeight, windowHeight, itemHeight, renderItem, ..
           height: rowHeight,
           lineHeight: `${rowHeight}px`
         },
-
       }
       items.push(
         <li className='row-list'  {...rowAttrs} key={index}>
-          <span className='li-row-span'>
+          <span className='li-row-span li-Title'>
             Ticket NO:  {rows[index].id}
           </span>
           <span className='li-row-span'>
@@ -57,12 +56,6 @@ function ListTickets({ rows, rowHeight, windowHeight, itemHeight, renderItem, ..
           <span className='li-row-span'>
             {rows[index].description}
           </span>
-          <span>
-            <IconButton color="primary" aria-label="upload picture" component="span">
-              <ModeEditIcon />
-            </IconButton>
-          </span>
-
         </li >
       )
 
@@ -90,6 +83,7 @@ function ListTickets({ rows, rowHeight, windowHeight, itemHeight, renderItem, ..
       width: "100%"
     }
   }
+
   return (
     <div className='container-list' >
 
