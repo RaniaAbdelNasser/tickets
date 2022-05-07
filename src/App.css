@@ -46,8 +46,45 @@ ul {
   padding: 0px 10px;
 }
 .form-Title{
-  
+  font-size: 15px;
+  font-weight: 500;
+  color: #112B3C;
     align-items: center;
     display: flex;
 
+}
+.title-info{
+  padding: 20px 10px;
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #112B3C;
+}
+.form-style{
+  padding: 20px 10px;
+}
+.btn-postion{
+  display: flex;
+  justify-content: end;
+  width: 100%;
+    padding: 20px 0px;
+}
+.btn-style{
+  border-radius: 20px !important;
+  padding: 10px 50px !important;
+}
+.input-style{
+  border: 1px solid darkgray;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+  align-items: center;
+  width: 96%;
+    position: relative;
+    border-radius: 4px;
+  padding: 16.5px 14px;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
 }

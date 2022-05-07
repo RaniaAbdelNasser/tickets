@@ -113,6 +113,17 @@ const tickets = (state,{payload,type})=>{
                 },
             };
         }
+        case actions.CLEAR_CREATE_TICKET:{
+            return {
+                ...state,
+                createTicket:{
+                    ...state. createTicket,
+                    errorCreateTicket:null,
+                    loadingCreateTicket:false,
+                    dataCreateTicket:null
+                },
+            };
+        }
         default :
         return state;
     }

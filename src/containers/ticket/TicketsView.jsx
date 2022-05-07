@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import ListTickets from './ListTickets';
-
+import { useNavigate } from "react-router-dom";
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
@@ -17,7 +17,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import TicketsTable from './TicketTabl';
 import TableViewIcon from '@mui/icons-material/TableView';
 function TicketsView() {
-
+    const navigate = useNavigate();
     const {
         ticketsDispatch,
         ticketsState: {
@@ -40,13 +40,13 @@ function TicketsView() {
                 <Typography variant="h5" component="h5" p={4}>
                     <AutoAwesomeMotionIcon color="primary" />
                     <span className="title">Tickets List</span>
-                    <Button disableElevation style={{ float: "right" }} variant="contained" href="/createTicket" startIcon={<AddIcon />}>
+                    <Button disableElevation style={{ float: "right" }} variant="contained" onClick={(e)=>{navigate("/createTicket")}} startIcon={<AddIcon />}>
                         Add New Ticket
                     </Button>
                 </Typography>
             </Paper>
             <Paper m={3} style={{ marginTop: "20px" }}>
-                <div style={{ padding: "20px 60p", display: "flex", justifyContent: "space-between", alignItems: "center" }} >
+                <div style={{ padding: "20px 60px", display: "flex", justifyContent: "space-between", alignItems: "center" }} >
                     <Chip label={`Records: ${tickets.length}`} />
                     <ToggleButtonGroup
                         value={view}
@@ -64,7 +64,7 @@ function TicketsView() {
                         </ToggleButton> */}
                     </ToggleButtonGroup>
                 </div>
-                {loading && <Box sx={{ display: 'flex' }}>
+                {loading && <Box sx={{ display: 'flex',justifyContent:"center" }}>
                     <CircularProgress />
                 </Box>}
                 {(tickets?.length > 0 && view === 'list') &&
